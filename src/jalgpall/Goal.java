@@ -1,5 +1,11 @@
 package jalgpall;
 
-public class Goal {
+import java.sql.*;
 
+public class Goal {
+	private Time goalTime;
+	
+	Goal(Time t) {
+		
+	}
 }
