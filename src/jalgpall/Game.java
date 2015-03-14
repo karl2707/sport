@@ -7,7 +7,6 @@ import play.Peaklass;
 
 public class Game {
 	private int periodLength;
-	private int numberOfPeriods;
 	private boolean gameRunning;
 	private long gameStartTime;
 	private ArrayList<Goal> goalList; 

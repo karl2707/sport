@@ -22,7 +22,6 @@ public class Peaklass {
 			System.out.println(action);
 
 			if (action.equals("s")) {
-				System.out.println("Mäng läks lahti!");
 				soccerGame.startGame();
 			}
 			if (action.equals("g")) {
