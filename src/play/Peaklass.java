@@ -32,6 +32,10 @@ public class Peaklass {
 			if (action.equals("q")) {
 				break;
 			}
+			
+			if (action.equals("väravad")) {
+				System.out.println(soccerGame.getGoalList());
+			};
 
 		}
 	}
