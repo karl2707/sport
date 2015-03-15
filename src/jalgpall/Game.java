@@ -15,7 +15,6 @@ public class Game {
 
 	/**
 	 * Loob uue mängu isendi.
-	 * 
 	 * @param periodLength
 	 *            Poolaja pikkus.
 	 */
@@ -35,6 +34,10 @@ public class Game {
 		return teamList;
 	}
 
+	public ArrayList<Foul> getFoulList() {
+		return foulList;
+	}
+
 	/**
 	 * Alustab mängu. Paneb paika mängu algushetke.
 	 */
@@ -48,43 +51,119 @@ public class Game {
 	}
 
 	/**
-	 * Meetodi abil luuakse uus värava objekt ja lisatakse see väravate listi.
-	 * Kõigepealt leiab meetod värava löömise aja ja seejärel küsitakse kasutaja
-	 * käest värava löönud meeskonna ja mängija nime.
+	 * Kontrollib, kas etteantud meeskond kuulub selle mängu meeskondade hulka.
+	 * 
+	 * @param goalTeam
+	 *            Etteantud meeskond.
+	 * @return Väljastab true või false.
 	 */
+	public boolean teamCheck(String goalTeam) {
+		ArrayList<Team> team = Peaklass.soccerGame.teamList;
+		for (int i = 0; i < team.size(); i++) {
+			if (team.get(i).getTeamName().equals(goalTeam)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Lisab antud meeskonnale ühe värava.
+	 * 
+	 * @param goalTeam
+	 *            Värava saanud meeskonna nimi.
+	 */
+	public void addScore(String goalTeam) {
+		ArrayList<Team> team = Peaklass.soccerGame.teamList;
+		for (int i = 0; i < team.size(); i++) {
+			if (team.get(i).getTeamName().equals(goalTeam)) {
+				team.get(i).addGoal();
+			}
+		}
+	}
+
+	/**
+	 * Lisab antud meeskonnale ühe vea.
+	 * 
+	 * @param foulTeam
+	 *            Vea teinud meeskonna nimi.
+	 */
+	public void addFoul(String foulTeam) {
+		ArrayList<Team> team = Peaklass.soccerGame.teamList;
+		for (int i = 0; i < team.size(); i++) {
+			if (team.get(i).getTeamName().equals(foulTeam)) {
+				team.get(i).addFoul();
+			}
+		}
+	}
+
+	/**
+	 * Värava registreerimsie meetod. Kõigepealt leiab meetod värava löömise aja
+	 * ja seejärel küsitakse kasutaja käest värava löönud meeskonna nime. Kui
+	 * meeskonna nimi ei sobi, küsitakse kasutaja käest meeskonna nime, kuni see
+	 * sobib. Seejärel lisatakse meeskonna objektile üks värav. Seejärel
+	 * küsitakse värava löönud mängija nime. Seejärel luuakse uus värava objekt
+	 * ja lisatakse see väravate listi.
+	 */
+
 	public void goal() {
 
 		long currentTime = System.currentTimeMillis();
 		long startTime = Peaklass.soccerGame.getGameStartTime();
 		long goalTime = ((currentTime - startTime) / 1000 / 60) + 1;
 
-		Scanner scan = new Scanner(System.in);
-
 		System.out.println("Sisesta skoorinud meeskonna nimi: ");
-		String goalTeam = scan.nextLine();
-		
+		String goalTeam = Peaklass.getInput();
+
+		while (!teamCheck(goalTeam)) {
+			System.out
+					.println("Sisestasite vale meeskonna nime, proovige uuesti: ");
+			goalTeam = Peaklass.getInput();
+		}
+
+		addScore(goalTeam);
+
 		System.out.println("Sisesta skoorinud mängija nimi: ");
-		String goalScorer = scan.nextLine();
+		String goalScorer = Peaklass.getInput();
 
 		Goal goal = new Goal(goalTeam, goalScorer, goalTime);
 
 		goalList.add(goal);
 	}
 
+	/**
+	 * Vea registreerimise meetod. Kõigepealt leiab meetod vea sooritamise aja,
+	 * seejärel küsitakse vea sooritanud mängija nime ja meeskonda ning vea
+	 * saanud mängija nime. Kui meeskonna nimi ei sobi, küsitakse kasutaja käest
+	 * meeskonna nime, kuni see sobib. Seejärel lisatakse meeskonna objektile
+	 * üks viga. Seejärel küsitakse, kas vea tõttu anti välja kaart. Seejärel
+	 * luuakse uus vea objekt ja lisatakse see listi.
+	 */
 	public void foul() {
 		long currentTime = System.currentTimeMillis();
 		long startTime = Peaklass.soccerGame.getGameStartTime();
 		long foulTime = ((currentTime - startTime) / 1000 / 60) + 1;
 
-		Scanner scan = new Scanner(System.in);
-
 		System.out.println("Sisesta mängija nimi, kes vea tegi: ");
-		String foulCommitter = scan.nextLine();
+		String foulCommitter = Peaklass.getInput();
+
+		System.out
+				.println("Sisesta meeskonna nimi, milles vea teinud mängija on: ");
+		String foulTeam = Peaklass.getInput();
+
+		while (!teamCheck(foulTeam)) {
+			System.out
+					.println("Sisestasite vale meeskonna nime, proovige uuesti: ");
+			foulTeam = Peaklass.getInput();
+		}
+
+		addFoul(foulTeam);
+
 		System.out.println("Sisesta mängija nimi, kelle viga tehti: ");
-		String foulRecipient = scan.nextLine();
+		String foulRecipient = Peaklass.getInput();
 		System.out
 				.println("Sisesta kaart, kui see anti (kui ei antud, ära sisesta midagi): ");
-		String card = scan.nextLine();
+		String card = Peaklass.getInput();
 
 		if (card.equals("")) {
 			Foul foul = new Foul(foulCommitter, foulRecipient, foulTime);
@@ -95,11 +174,17 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Teeb String-sisendi põhjal meeskonnad ja lisab need meeskondade listi.
+	 * 
+	 * @param first
+	 *            Esimese meeskonna nimi.
+	 * @param second
+	 *            Teise meeskonna nimi.
+	 */
 	public void createTeams(String first, String second) {
 		Team firstTeam = new Team(first);
 		Team secondTeam = new Team(second);
-
-		System.out.println(firstTeam + " " + secondTeam);
 
 		teamList.add(firstTeam);
 		teamList.add(secondTeam);

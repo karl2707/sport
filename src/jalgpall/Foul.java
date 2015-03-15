@@ -34,7 +34,7 @@ public class Foul {
 		this.foulCommitter = foulCommitter;
 		this.foulRecipient = foulRecipient;
 		this.foulTime = foulTime;
-		this.card = null;
+		this.card = "NoCard";
 	}
 
 	public String toString() {
