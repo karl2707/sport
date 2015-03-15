@@ -53,7 +53,18 @@ public class Peaklass {
 			}
 
 			if (action.equals("vead")) {
-				System.out.println(soccerGame.getFoulList());
+				System.out.println(soccerGame.getFoulList()); // "vead"
+																// sisestamisel
+																// väljastab
+																// programme
+																// kõikide
+																// vigade listi.
+			}
+
+			if (action.equals("seis")) {
+				System.out.println(soccerGame.seis()); // "seis" sisestamisel
+														// väljastab programm
+														// mängu seisu.
 			}
 
 			if (action.equals("q")) { // "q" sisestamisel lõpetatakse mäng.

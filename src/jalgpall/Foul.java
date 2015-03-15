@@ -38,8 +38,8 @@ public class Foul {
 	}
 
 	public String toString() {
-		return foulCommitter + " " + foulRecipient + " " + card + " "
-				+ foulTime;
+		return "Vea teinud mängija: " + foulCommitter + " \nVea saanud mängija: " + foulRecipient + "\nKaart: " + card + "\nVea aeg: "
+				+ foulTime + ". minut.";
 	}
 
 }

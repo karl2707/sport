@@ -15,6 +15,7 @@ public class Game {
 
 	/**
 	 * Loob uue mängu isendi.
+	 * 
 	 * @param periodLength
 	 *            Poolaja pikkus.
 	 */
@@ -163,7 +164,7 @@ public class Game {
 		String foulRecipient = Peaklass.getInput();
 		System.out
 				.println("Sisesta kaart, kui see anti (kui ei antud, ära sisesta midagi): ");
-		String card = Peaklass.getInput();
+		String card = Peaklass.getInput().toLowerCase();
 
 		if (card.equals("")) {
 			Foul foul = new Foul(foulCommitter, foulRecipient, foulTime);
@@ -188,5 +189,20 @@ public class Game {
 
 		teamList.add(firstTeam);
 		teamList.add(secondTeam);
+	}
+	
+	/**
+	 * Leiab mängu seisu ja tagastab selle 
+	 * @return Tagastab seisu stringina.
+	 */
+	public String seis() {
+		StringBuilder seis = new StringBuilder();
+		ArrayList<Team> team = Peaklass.soccerGame.teamList;
+
+		seis.append(team.get(0).getTeamName() + " " + team.get(0).getGoals()
+				+ " - " + team.get(1).getGoals() + " "
+				+ team.get(1).getTeamName());
+		
+		return seis.toString();
 	}
 }

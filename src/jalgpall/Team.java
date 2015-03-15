@@ -23,7 +23,9 @@ public class Team {
 	int getGoals() {
 		return goals;
 	}
-
+	/**
+	 * Lisab ühe värava.
+	 */
 	protected void addGoal() {
 		this.goals ++;
 	}
@@ -31,11 +33,14 @@ public class Team {
 	int getFouls() {
 		return fouls;
 	}
-
+	
+	/**
+	 * Lisab ühe vea.
+	 */
 	protected void addFoul() {
 		this.fouls ++;
 	}
-
+	
 	public String toString() {
 		return teamName;
 	}
