@@ -1,21 +1,17 @@
 package jalgpall;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Arrays;
-import play.Peaklass;
+import java.sql.*;
 
 public class Game {
 	private int periodLength;
 	private boolean gameRunning;
-	private long gameStartTime;
-	private ArrayList<Goal> goalList = new ArrayList<Goal>();
-	private ArrayList<Foul> foulList = new ArrayList<Foul>();
+	private Time gameStartTime;
+	private ArrayList<Actionable> actions = new ArrayList<Actionable>();
 	private Team[]  teamList;
 
 	/**
 	 * Loob uue mängu isendi.
-	 * 
 	 * @param periodLength Poolaja pikkus.
 	 */
 	public Game(int periodLength, Team t1, Team t2) {
@@ -23,20 +19,28 @@ public class Game {
 		teamList = new Team[] {t1, t2};
 	}
 
-	public long getGameStartTime() {
-		return gameStartTime;
+	/**
+	 * 
+	 * @return
+	 */
+	public String getGameStartTime() {
+		return gameStartTime.toString();
 	}
-
-	public ArrayList<Goal> getGoalList() {
-		return goalList;
+	
+	public String getGameRunningTime() {
+		return null;
 	}
-
+	
+	public boolean isRunning() {
+		return gameRunning;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public Team[] getTeamList() {
 		return teamList;
-	}
-
-	public ArrayList<Foul> getFoulList() {
-		return foulList;
 	}
 
 	/**
@@ -44,11 +48,15 @@ public class Game {
 	 */
 	public void startGame() {
 		this.gameRunning = true;
-		this.gameStartTime = System.currentTimeMillis();
+		this.gameStartTime = new Time(System.currentTimeMillis());
 	}
 
 	public void endGame() {
 		this.gameRunning = false;
+	}
+	
+	public ArrayList<Actionable> getActions() {
+		return actions;
 	}
 
 	/**
