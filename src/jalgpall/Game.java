@@ -9,6 +9,7 @@ public class Game {
 	private Time gameStartTime;
 	private ArrayList<Action> actions = new ArrayList<Action>();
 	private Team[]  teamList;
+	private int[] standing = {0, 0};
 
 	/**
 	 * Loob uue mängu isendi.
@@ -34,12 +35,8 @@ public class Game {
 		return gameRunning;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	public Team[] getTeamList() {
-		return teamList;
+	public String getTeamList() {
+		return "[1] " + teamList[0] + " [2] " + teamList[1];
 	}
 
 	/**
@@ -58,7 +55,31 @@ public class Game {
 		return actions;
 	}
 	
-	public void addAction(Action action) {
+	public int[] getStanding() {
+		return standing;
+	}
+	
+	public int winner() {
+		if (standing[0] > standing[1])
+			return 0;
+		else if (standing[1] > standing[2])
+			return 1;
+		else
+			return -1;
+	}
+	
+	public String getTeamName(int id) {
+		return teamList[id].toString();
+	}
+	
+	public void addAction(int id, int team, Action action) {
+		Player p = teamList[team-1].getPlayerNumber(id);
+		action.setPlayer(p);
+		
+		if (action instanceof Goal) {
+			standing[team-1] += 1;	
+		}
+		
 		actions.add(action);
 	}
 }

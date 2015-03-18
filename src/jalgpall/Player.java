@@ -9,6 +9,10 @@ public class Player {
 		this.name = name;
 		this.number = number;
 	}
+	
+	protected Player(int number) {
+		this.number = number;
+	}
 
 	public String getName() {
 		return name;

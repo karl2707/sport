@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 public class Team {
 	private String teamName;
-	private ArrayList players;
-	private ArrayList<Goal> goals = new ArrayList<Goal>();
-	private ArrayList<Foul> fouls = new ArrayList<Foul>();
+	private ArrayList<Player> players;
 
 	/**
 	 * @param teamName Meeskonna nimi.
@@ -20,30 +18,21 @@ public class Team {
 	String getTeamName() {
 		return teamName;
 	}
-
-	int getGoals() {
-		return goals.size();
-	}
-	/**
-	 * Lisab ühe värava.
-	 */
-	protected void addGoal(Goal goal) {
-		this.goals.add(goal);
-	}
-
-	int getFouls() {
-		return fouls.size();
-	}
 	
 	/**
 	 * Lisatakse vigade listi uus viga.
 	 * @param foul Vea objekt. 
 	 */
-	protected void addFoul(Foul foul) {
-		fouls.add(foul);
-	}
 	
 	public String toString() {
 		return teamName;
+	}
+	
+	public Player getPlayerNumber(int id) {
+		for (Player a: players) {
+			if (a.getNumber() == id)
+				return a;
+		}
+		return players.get(0);
 	}
 }
