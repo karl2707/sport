@@ -2,7 +2,7 @@ package jalgpall;
 
 import java.sql.Time;
 
-public class Action implements Actionable {
+public abstract class Action{
 	protected Time time;
 	protected Player player;
 	protected Team team;
@@ -13,12 +13,10 @@ public class Action implements Actionable {
 		this.team = team;
 	}
 	
-	@Override
 	public Player getCommiter() {
 		return player;
 	}
 	
-	@Override
 	public String getTime() {
 		return time.toString();
 	}
