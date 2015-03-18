@@ -4,8 +4,13 @@ import java.sql.Time;
 
 public class YellowCard extends Action {
 
-	YellowCard(Time time, Player palyer, Team team) {
-		super(time, palyer, team);
+	public YellowCard() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	YellowCard(Player player, Team team) {
+		super(player, team);
 	}
 	
 	public String toString() {

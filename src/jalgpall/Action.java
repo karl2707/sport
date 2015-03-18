@@ -7,9 +7,21 @@ public abstract class Action{
 	protected Player player;
 	protected Team team;
 	
-	Action(Time time, Player player, Team team) {
-		this.time = time;
+	Action() {
+		this.time = new Time(System.currentTimeMillis());
+	}
+	
+	Action(Player player, Team team) {
+		this();
 		this.player = player;
+		this.team = team;
+	}
+	
+	public void setPlayer(Player player)  {
+		this.player = player;
+	}
+	
+	public void setTeam(Team team) {
 		this.team = team;
 	}
 	
