@@ -1,12 +1,9 @@
 package jalgpall;
 
-import java.sql.Time;
-
 public class YellowCard extends Action {
 
 	public YellowCard() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	YellowCard(Player player, Team team) {

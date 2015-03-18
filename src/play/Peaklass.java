@@ -92,7 +92,7 @@ public class Peaklass {
 		ArrayList<Player> players = new ArrayList<Player>();
 		
 		System.out.print("Mängijate arv meeskonnas: ");
-		int num = Integer.parseInt(scanner.nextLine());
+		int num = scanner.nextInt();
 		
 		for (int i = 0; i<num; i++) {
 			players.add(doPlayer(scanner));
@@ -109,7 +109,7 @@ public class Peaklass {
 	public static Player doPlayer(Scanner scanner) {
 		System.out.println("Mängija sisestamine.");
 		System.out.print("Mängija number: ");
-		int number = Integer.parseInt(scanner.nextLine());
+		int number = scanner.nextInt();
 		System.out.print("Mängija nimi: ");
 		String name = scanner.nextLine();
 		

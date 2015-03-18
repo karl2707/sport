@@ -1,16 +1,13 @@
 package jalgpall;
 
-import java.sql.Time;
-
 public class RedCard extends Action {
 	
-	RedCard(Player palyer, Team team) {
-		super(palyer, team);
+	public RedCard(Player player, Team team) {
+		super(player, team);
 	}
 
 	public RedCard() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String toString() {
