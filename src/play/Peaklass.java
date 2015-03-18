@@ -11,21 +11,32 @@ public class Peaklass {
 		
 		soccerGame = doGame(scanner);
 		
+		System.out.println("Alusta mänguga!");
+		scanner.hasNext();
+		
+		soccerGame.startGame();
+		
 		while (soccerGame.isRunning()) {
 			String input = scanner.nextLine().toLowerCase();
+			String i;
 			
 			switch (input) {
 			case("g"):
 				break;
 			case("q"):
-				System.out.println("Are you sure you want to end the game? [y] yes [n] no");
-				String i = scanner.nextLine().toLowerCase();
-				if (i.equals("y"))
+				System.out.println("Kas sa soovid lõpetada mängu? [j] jah [e] ei");
+				i = scanner.nextLine().toLowerCase();
+				if (i.equals("j"))
 					soccerGame.endGame();
+			case("b"):
+				System.out.println("Kas soovid alustada vaheaega? [j] jah [e] ei");
+				i = scanner.nextLine().toLowerCase();
+				if (i.equals("j"))
+					System.out.println("Jätka mängu");
 			}
 		}
 		
-		for (Actionable a: soccerGame.getActions()) {
+		for (Action a: soccerGame.getActions()) {
 			System.out.println(a);
 		}
 		
@@ -41,10 +52,7 @@ public class Peaklass {
 		Team t1 = doTeam(scanner);
 		Team t2 = doTeam(scanner);
 		
-		System.out.println("Sisesta poolaja pikkus");
-		int time = Integer.parseInt(scanner.nextLine());
-		
-		return new Game(time, t1, t2);
+		return new Game(t1, t2);
 	}
 	
 	/**
@@ -54,7 +62,7 @@ public class Peaklass {
 	 */
 	public static Team doTeam(Scanner scanner) {
 		System.out.println("Meeskonna sisestamine.");
-		System.out.println("Meeskonna nimi: ");
+		System.out.print("Meeskonna nimi: ");
 		String name = scanner.nextLine();
 		
 		ArrayList<Player> players = new ArrayList<Player>();
@@ -76,11 +84,27 @@ public class Peaklass {
 	 */
 	public static Player doPlayer(Scanner scanner) {
 		System.out.println("Mängija sisestamine.");
-		System.out.println("Mängija number: ");
+		System.out.print("Mängija number: ");
 		int number = Integer.parseInt(scanner.nextLine());
-		System.out.println("Mänigja nimi");
+		System.out.print("Mängija nimi");
 		String name = scanner.nextLine();
 		
 		return new Player(name, number);
+	}
+	
+	public static YellowCard doYellowCard() {
+		return null;
+	}
+	
+	public static RedCard doRedCard() {
+		return null;
+	}
+	
+	public static Foul doFoul() {
+		return null;
+	}
+	
+	public static Goal doGoal() {
+		return null;
 	}
 }

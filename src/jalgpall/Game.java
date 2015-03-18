@@ -4,19 +4,17 @@ import java.util.ArrayList;
 import java.sql.*;
 
 public class Game {
-	private int periodLength;
 	private boolean gameRunning;
 	private int numPeriod;
 	private Time gameStartTime;
-	private ArrayList<Actionable> actions = new ArrayList<Actionable>();
+	private ArrayList<Action> actions = new ArrayList<Action>();
 	private Team[]  teamList;
 
 	/**
 	 * Loob uue mängu isendi.
 	 * @param periodLength Poolaja pikkus.
 	 */
-	public Game(int periodLength, Team t1, Team t2) {
-		this.periodLength = periodLength;
+	public Game(Team t1, Team t2) {
 		teamList = new Team[] {t1, t2};
 	}
 
@@ -56,7 +54,11 @@ public class Game {
 		this.gameRunning = false;
 	}
 	
-	public ArrayList<Actionable> getActions() {
+	public ArrayList<Action> getActions() {
 		return actions;
+	}
+	
+	public void addAction(Action action) {
+		actions.add(action);
 	}
 }
