@@ -9,7 +9,7 @@ public class Goal extends Action {
 		// TODO Auto-generated constructor stub
 	}
 
-	Goal(Time time, Player player, Team team) {
+	Goal(Player player, Team team) {
 		super(player, team);
 	}
 

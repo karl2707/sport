@@ -9,7 +9,7 @@ public class Foul extends Action {
 		// TODO Auto-generated constructor stub
 	}
 
-	Foul(Time time, Player player, Team team) {
+	Foul(Player player, Team team) {
 		super(player, team);
 	}
 

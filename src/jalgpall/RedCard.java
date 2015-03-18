@@ -4,7 +4,7 @@ import java.sql.Time;
 
 public class RedCard extends Action {
 	
-	RedCard(Time time, Player palyer, Team team) {
+	RedCard(Player palyer, Team team) {
 		super(palyer, team);
 	}
 
