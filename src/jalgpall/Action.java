@@ -2,13 +2,15 @@ package jalgpall;
 
 import java.sql.Time;
 
-public class Card implements Actionable {
+public class Action implements Actionable {
 	protected Time time;
 	protected Player player;
+	protected Team team;
 	
-	Card(Time time, Player player) {
+	Action(Time time, Player player, Team team) {
 		this.time = time;
 		this.player = player;
+		this.team = team;
 	}
 	
 	@Override

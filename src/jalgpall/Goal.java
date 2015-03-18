@@ -1,23 +1,14 @@
 package jalgpall;
 
-public class Goal {
-	private long goalTime;
-	private Team goalTeam;
-	private Player goalScorer;
+import java.sql.Time;
+
+public class Goal extends Action {
 	
-	/**
-	 * Värava konstruktor.
-	 * @param team Värava löönud meeskonna objekt
-	 * @param scorer Värava löönud mängija objekt
-	 * @param time Värava aeg
-	 */
-	public Goal(Team team, Player scorer, long time) {
-		this.goalTeam = team;
-		this.goalScorer = scorer;
-		this.goalTime = time;
+	Goal(Time time, Player player, Team team) {
+		super(time, player, team);
 	}
 
 	public String toString() {
-		return "Värava aeg: " + goalTime + ". minut \nVärava löönud meeskond: " + goalTeam + " \nVärava löönud mängija: " + goalScorer;
+		return "Värav " + super.toString();
 	}
 }

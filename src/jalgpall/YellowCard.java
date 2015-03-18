@@ -2,10 +2,10 @@ package jalgpall;
 
 import java.sql.Time;
 
-public class YellowCard extends Card {
+public class YellowCard extends Action {
 
-	YellowCard(Time time, Player palyer) {
-		super(time, palyer);
+	YellowCard(Time time, Player palyer, Team team) {
+		super(time, palyer, team);
 	}
 	
 	public String toString() {
