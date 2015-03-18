@@ -1,20 +1,17 @@
 package jalgpall;
 
-import play.*;
-import java.util.Scanner;
-
 public class Goal {
 	private long goalTime;
-	private String goalTeam;
-	private String goalScorer;
+	private Team goalTeam;
+	private Player goalScorer;
 	
 	/**
 	 * Värava konstruktor.
-	 * @param team Värava löönud meeskonna nimi.
-	 * @param scorer Värava löönud mängija nimi.
-	 * @param time Värava aeg.
+	 * @param team Värava löönud meeskonna objekt
+	 * @param scorer Värava löönud mängija objekt
+	 * @param time Värava aeg
 	 */
-	public Goal(String team, String scorer, long time) {
+	public Goal(Team team, Player scorer, long time) {
 		this.goalTeam = team;
 		this.goalScorer = scorer;
 		this.goalTime = time;

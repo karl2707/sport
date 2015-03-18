@@ -11,16 +11,16 @@ public class Game {
 	private long gameStartTime;
 	private ArrayList<Goal> goalList = new ArrayList<Goal>();
 	private ArrayList<Foul> foulList = new ArrayList<Foul>();
-	private ArrayList<Team> teamList = new ArrayList<Team>();
+	private Team[]  teamList;
 
 	/**
 	 * Loob uue mängu isendi.
 	 * 
-	 * @param periodLength
-	 *            Poolaja pikkus.
+	 * @param periodLength Poolaja pikkus.
 	 */
-	public Game(int periodLength) {
+	public Game(int periodLength, Team t1, Team t2) {
 		this.periodLength = periodLength;
+		teamList = new Team[] {t1, t2};
 	}
 
 	public long getGameStartTime() {
@@ -31,7 +31,7 @@ public class Game {
 		return goalList;
 	}
 
-	public ArrayList<Team> getTeamList() {
+	public Team[] getTeamList() {
 		return teamList;
 	}
 
@@ -48,16 +48,15 @@ public class Game {
 	}
 
 	public void endGame() {
-
+		this.gameRunning = false;
 	}
 
 	/**
 	 * Kontrollib, kas etteantud meeskond kuulub selle mängu meeskondade hulka.
 	 * 
-	 * @param goalTeam
-	 *            Etteantud meeskond.
+	 * @param goalTeam Etteantud meeskond.
 	 * @return Väljastab true või false.
-	 */
+	 *//*
 	public boolean teamCheck(String goalTeam) {
 		ArrayList<Team> team = Peaklass.soccerGame.teamList;
 		for (int i = 0; i < team.size(); i++) {
@@ -66,14 +65,14 @@ public class Game {
 			}
 		}
 		return false;
-	}
-
+	}*/
+	
 	/**
 	 * Lisab antud meeskonnale ühe värava.
 	 * 
 	 * @param goalTeam
 	 *            Värava saanud meeskonna nimi.
-	 */
+	 *//*
 	public void addScore(String goalTeam) {
 		ArrayList<Team> team = Peaklass.soccerGame.teamList;
 		for (int i = 0; i < team.size(); i++) {
@@ -82,13 +81,13 @@ public class Game {
 			}
 		}
 	}
-
+	*/
 	/**
 	 * Lisab antud meeskonnale ühe vea.
 	 * 
 	 * @param foulTeam
 	 *            Vea teinud meeskonna nimi.
-	 */
+	 *//*
 	public void addFoul(String foulTeam) {
 		ArrayList<Team> team = Peaklass.soccerGame.teamList;
 		for (int i = 0; i < team.size(); i++) {
@@ -96,7 +95,7 @@ public class Game {
 				team.get(i).addFoul();
 			}
 		}
-	}
+	}*/
 
 	/**
 	 * Värava registreerimsie meetod. Kõigepealt leiab meetod värava löömise aja
@@ -106,7 +105,7 @@ public class Game {
 	 * küsitakse värava löönud mängija nime. Seejärel luuakse uus värava objekt
 	 * ja lisatakse see väravate listi.
 	 */
-
+	/*
 	public void goal() {
 
 		long currentTime = System.currentTimeMillis();
@@ -130,7 +129,7 @@ public class Game {
 		Goal goal = new Goal(goalTeam, goalScorer, goalTime);
 
 		goalList.add(goal);
-	}
+	}*/
 
 	/**
 	 * Vea registreerimise meetod. Kõigepealt leiab meetod vea sooritamise aja,
@@ -139,7 +138,7 @@ public class Game {
 	 * meeskonna nime, kuni see sobib. Seejärel lisatakse meeskonna objektile
 	 * üks viga. Seejärel küsitakse, kas vea tõttu anti välja kaart. Seejärel
 	 * luuakse uus vea objekt ja lisatakse see listi.
-	 */
+	 *//*
 	public void foul() {
 		long currentTime = System.currentTimeMillis();
 		long startTime = Peaklass.soccerGame.getGameStartTime();
@@ -173,28 +172,26 @@ public class Game {
 			Foul foul = new Foul(foulCommitter, foulRecipient, card, foulTime);
 			foulList.add(foul);
 		}
-	}
+	}*/
 
 	/**
 	 * Teeb String-sisendi põhjal meeskonnad ja lisab need meeskondade listi.
 	 * 
-	 * @param first
-	 *            Esimese meeskonna nimi.
-	 * @param second
-	 *            Teise meeskonna nimi.
-	 */
+	 * @param first Esimese meeskonna nimi.
+	 * @param second Teise meeskonna nimi.
+	 *//*
 	public void createTeams(String first, String second) {
 		Team firstTeam = new Team(first);
 		Team secondTeam = new Team(second);
 
 		teamList.add(firstTeam);
 		teamList.add(secondTeam);
-	}
+	}*/
 	
 	/**
 	 * Leiab mängu seisu ja tagastab selle 
 	 * @return Tagastab seisu stringina.
-	 */
+	 *//*
 	public String seis() {
 		StringBuilder seis = new StringBuilder();
 		ArrayList<Team> team = Peaklass.soccerGame.teamList;
@@ -204,5 +201,5 @@ public class Game {
 				+ team.get(1).getTeamName());
 		
 		return seis.toString();
-	}
+	}*/
 }

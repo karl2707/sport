@@ -1,19 +1,20 @@
 package jalgpall;
 
+import java.util.ArrayList;
+
 public class Team {
 	private String teamName;
-	private int goals;
-	private int fouls;
+	private ArrayList players;
+	private ArrayList<Goal> goals = new ArrayList<Goal>();
+	private ArrayList<Foul> fouls = new ArrayList<Foul>();
 
 	/**
-	 * @param teamName
-	 *            Meeskonna nimi.
+	 * @param teamName Meeskonna nimi.
 	 */
-	Team(String teamName) {
+	public Team(String teamName, ArrayList<Player> players) {
 		super();
 		this.teamName = teamName;
-		this.goals = 0;
-		this.fouls = 0;
+		this.players = players;
 	}
 
 	String getTeamName() {
@@ -21,24 +22,25 @@ public class Team {
 	}
 
 	int getGoals() {
-		return goals;
+		return goals.size();
 	}
 	/**
 	 * Lisab ühe värava.
 	 */
-	protected void addGoal() {
-		this.goals ++;
+	protected void addGoal(Goal goal) {
+		this.goals.add(goal);
 	}
 
 	int getFouls() {
-		return fouls;
+		return fouls.size();
 	}
 	
 	/**
-	 * Lisab ühe vea.
+	 * Lisatakse vigade listi uus viga.
+	 * @param foul Vea objekt. 
 	 */
-	protected void addFoul() {
-		this.fouls ++;
+	protected void addFoul(Foul foul) {
+		fouls.add(foul);
 	}
 	
 	public String toString() {
