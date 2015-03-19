@@ -122,7 +122,7 @@ public class Game {
 	public int winner() {
 		if (standing[0] > standing[1])
 			return 0;
-		else if (standing[1] > standing[2])
+		else if (standing[1] > standing[0])
 			return 1;
 		else
 			//Mäng on jäänud viiki
