@@ -56,6 +56,10 @@ public class Peaklass {
 			System.out.println("Mäng jäi viiki!");
 		}
 		
+		System.out.println("Seis on");
+		
+		System.out.println(soccerGame.getStanding()[0] + " : " + soccerGame.getStanding()[1]);
+		
 		listActions(soccerGame.getActions());
 		
 		scanner.close();
@@ -93,6 +97,7 @@ public class Peaklass {
 		
 		System.out.print("Mängijate arv meeskonnas: ");
 		int num = scanner.nextInt();
+		scanner.nextLine();
 		
 		for (int i = 0; i<num; i++) {
 			players.add(doPlayer(scanner));
@@ -110,6 +115,7 @@ public class Peaklass {
 		System.out.println("Mängija sisestamine.");
 		System.out.print("Mängija number: ");
 		int number = scanner.nextInt();
+		scanner.nextLine();
 		System.out.print("Mängija nimi: ");
 		String name = scanner.nextLine();
 		
